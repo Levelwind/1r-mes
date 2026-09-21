@@ -327,9 +327,14 @@ body {
     left: calc(100vw - 12px);
   }
 
+  /* Flechas más compactas ubicadas en la parte inferior central */
   .nav-btn {
-    width: 46px;
-    height: 46px;
+    top: auto;
+    bottom: clamp(16px, 3vh, 26px);
+    width: 44px;
+    height: 44px;
+    transform: none;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
   }
 
   .nav-btn svg {
@@ -338,15 +343,25 @@ body {
   }
 
   .nav-btn.prev {
-    left: 10px;
+    left: calc(50% - 52px);
+    right: auto;
   }
 
   .nav-btn.next {
-    right: 44px;
+    left: calc(50% + 8px);
+    right: auto;
+  }
+
+  .nav-btn:hover {
+    transform: scale(1.08);
+  }
+
+  .nav-btn:active {
+    transform: scale(0.92);
   }
 
   .first-card-content {
-    padding: 20px 58px;
+    padding: 20px 24px 72px;
     gap: 16px;
   }
 
@@ -364,7 +379,7 @@ body {
   }
 
   .card-center-content {
-    padding: 20px 58px;
+    padding: 20px 24px 72px;
     gap: 16px;
   }
 
@@ -380,25 +395,28 @@ body {
 
 @media (max-width: 480px) {
   .nav-btn {
-    width: 40px;
-    height: 40px;
+    bottom: 16px;
+    width: 38px;
+    height: 38px;
   }
 
   .nav-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
   }
 
   .nav-btn.prev {
-    left: 8px;
+    left: calc(50% - 46px);
+    right: auto;
   }
 
   .nav-btn.next {
-    right: 40px;
+    left: calc(50% + 8px);
+    right: auto;
   }
 
   .first-card-content {
-    padding: 16px 50px;
+    padding: 16px 20px 64px;
     gap: 14px;
   }
 
@@ -417,7 +435,7 @@ body {
   }
 
   .card-center-content {
-    padding: 16px 50px;
+    padding: 16px 20px 64px;
     gap: 14px;
   }
 
