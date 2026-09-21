@@ -101,31 +101,31 @@ function createCardFlowersLayer(cardIndex) {
   const layer = document.createElement("div");
   layer.className = "card-flowers-layer";
 
-  // Zonas perimetrales exteriores (bordes y esquinas) para nunca invadir el centro
+  // Zonas perimetrales exteriores con margen de seguridad (3%-82% top, 4%-80% left)
   const perimeterZones = [
     // Borde Superior
-    { minTop: 2, maxTop: 11, minLeft: 4, maxLeft: 24 },
-    { minTop: 2, maxTop: 11, minLeft: 28, maxLeft: 48 },
-    { minTop: 2, maxTop: 11, minLeft: 52, maxLeft: 72 },
-    { minTop: 2, maxTop: 11, minLeft: 76, maxLeft: 92 },
+    { minTop: 3, maxTop: 10, minLeft: 5, maxLeft: 22 },
+    { minTop: 3, maxTop: 10, minLeft: 26, maxLeft: 44 },
+    { minTop: 3, maxTop: 10, minLeft: 48, maxLeft: 66 },
+    { minTop: 3, maxTop: 10, minLeft: 70, maxLeft: 80 },
 
     // Borde Izquierdo
-    { minTop: 16, maxTop: 45, minLeft: 2, maxLeft: 12 },
-    { minTop: 52, maxTop: 80, minLeft: 2, maxLeft: 12 },
+    { minTop: 16, maxTop: 42, minLeft: 4, maxLeft: 10 },
+    { minTop: 48, maxTop: 74, minLeft: 4, maxLeft: 10 },
 
     // Borde Derecho
-    { minTop: 16, maxTop: 45, minLeft: 84, maxLeft: 92 },
-    { minTop: 52, maxTop: 80, minLeft: 84, maxLeft: 92 },
+    { minTop: 16, maxTop: 42, minLeft: 72, maxLeft: 80 },
+    { minTop: 48, maxTop: 74, minLeft: 72, maxLeft: 80 },
 
     // Borde Inferior
-    { minTop: 85, maxTop: 94, minLeft: 4, maxLeft: 24 },
-    { minTop: 85, maxTop: 94, minLeft: 28, maxLeft: 48 },
-    { minTop: 85, maxTop: 94, minLeft: 52, maxLeft: 72 },
-    { minTop: 85, maxTop: 94, minLeft: 76, maxLeft: 92 }
+    { minTop: 76, maxTop: 82, minLeft: 5, maxLeft: 22 },
+    { minTop: 76, maxTop: 82, minLeft: 26, maxLeft: 44 },
+    { minTop: 76, maxTop: 82, minLeft: 48, maxLeft: 66 },
+    { minTop: 76, maxTop: 82, minLeft: 70, maxLeft: 80 }
   ];
 
   // Distribuir entre 10 y 12 flores por tarjeta de forma balanceada
-  const count = 10 + (cardIndex % 3); // 10 a 12 flores variadas por carta
+  const count = 10 + (cardIndex % 3);
   const shuffledZones = [...perimeterZones].sort(() => Math.random() - 0.5);
   const selectedZones = shuffledZones.slice(0, count);
 
@@ -136,13 +136,13 @@ function createCardFlowersLayer(cardIndex) {
     const top = zone.minTop + Math.random() * (zone.maxTop - zone.minTop);
     const left = zone.minLeft + Math.random() * (zone.maxLeft - zone.minLeft);
 
-    // Rotación orgánica entre -26deg y +26deg
-    const rot = -26 + Math.random() * 52;
-    // Escala natural entre 0.85 y 1.15
-    const scale = 0.85 + Math.random() * 0.3;
+    // Rotación orgánica entre -20deg y +20deg
+    const rot = -20 + Math.random() * 40;
+    // Escala natural entre 0.85 y 1.1
+    const scale = 0.85 + Math.random() * 0.25;
     // Desfase de animación suave de viento
-    const swayX = -4 + Math.random() * 8;
-    const swayY = -3 + Math.random() * 6;
+    const swayX = -2 + Math.random() * 4;
+    const swayY = -2 + Math.random() * 4;
     const animDelay = Math.random() * 4.5;
     const animDuration = 3.6 + Math.random() * 2;
 
