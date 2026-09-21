@@ -96,55 +96,60 @@ const CARD_FLOWERS = [
 // =============================================================================
 const AVAILABLE_FLOWERS = CARD_FLOWERS.slice(0, 18);
 
-// Genera una capa balanceada de flores alrededor de la tarjeta, manteniendo el centro limpio
+// Genera flores variadas y bien repartidas alrededor de todo el perímetro (sin invadir el centro)
 function createCardFlowersLayer(cardIndex) {
   const layer = document.createElement("div");
   layer.className = "card-flowers-layer";
 
-  // Zonas perimetrales exteriores con margen de seguridad (3%-82% top, 4%-80% left)
+  // 18 sectores perimetrales para cubrir todos los bordes uniformemente sin dejar huecos
   const perimeterZones = [
-    // Borde Superior
-    { minTop: 3, maxTop: 10, minLeft: 5, maxLeft: 22 },
-    { minTop: 3, maxTop: 10, minLeft: 26, maxLeft: 44 },
-    { minTop: 3, maxTop: 10, minLeft: 48, maxLeft: 66 },
-    { minTop: 3, maxTop: 10, minLeft: 70, maxLeft: 80 },
+    // Borde Superior (5 sectores continuos)
+    { minTop: 2, maxTop: 9, minLeft: 4, maxLeft: 18 },
+    { minTop: 2, maxTop: 9, minLeft: 20, maxLeft: 34 },
+    { minTop: 2, maxTop: 9, minLeft: 36, maxLeft: 50 },
+    { minTop: 2, maxTop: 9, minLeft: 52, maxLeft: 66 },
+    { minTop: 2, maxTop: 9, minLeft: 68, maxLeft: 81 },
 
-    // Borde Izquierdo
-    { minTop: 16, maxTop: 42, minLeft: 4, maxLeft: 10 },
-    { minTop: 48, maxTop: 74, minLeft: 4, maxLeft: 10 },
+    // Borde Izquierdo (4 sectores continuos)
+    { minTop: 14, maxTop: 27, minLeft: 3, maxLeft: 9 },
+    { minTop: 30, maxTop: 43, minLeft: 3, maxLeft: 9 },
+    { minTop: 46, maxTop: 59, minLeft: 3, maxLeft: 9 },
+    { minTop: 62, maxTop: 73, minLeft: 3, maxLeft: 9 },
 
-    // Borde Derecho
-    { minTop: 16, maxTop: 42, minLeft: 72, maxLeft: 80 },
-    { minTop: 48, maxTop: 74, minLeft: 72, maxLeft: 80 },
+    // Borde Derecho (4 sectores continuos)
+    { minTop: 14, maxTop: 27, minLeft: 73, maxLeft: 80 },
+    { minTop: 30, maxTop: 43, minLeft: 73, maxLeft: 80 },
+    { minTop: 46, maxTop: 59, minLeft: 73, maxLeft: 80 },
+    { minTop: 62, maxTop: 73, minLeft: 73, maxLeft: 80 },
 
-    // Borde Inferior
-    { minTop: 76, maxTop: 82, minLeft: 5, maxLeft: 22 },
-    { minTop: 76, maxTop: 82, minLeft: 26, maxLeft: 44 },
-    { minTop: 76, maxTop: 82, minLeft: 48, maxLeft: 66 },
-    { minTop: 76, maxTop: 82, minLeft: 70, maxLeft: 80 }
+    // Borde Inferior (5 sectores continuos)
+    { minTop: 77, maxTop: 83, minLeft: 4, maxLeft: 18 },
+    { minTop: 77, maxTop: 83, minLeft: 20, maxLeft: 34 },
+    { minTop: 77, maxTop: 83, minLeft: 36, maxLeft: 50 },
+    { minTop: 77, maxTop: 83, minLeft: 52, maxLeft: 66 },
+    { minTop: 77, maxTop: 83, minLeft: 68, maxLeft: 81 }
   ];
 
-  // Distribuir entre 10 y 12 flores por tarjeta de forma balanceada
-  const count = 10 + (cardIndex % 3);
-  const shuffledZones = [...perimeterZones].sort(() => Math.random() - 0.5);
-  const selectedZones = shuffledZones.slice(0, count);
+  // Barajar las 18 flores para que cada tarjeta tenga un orden completamente variado y aleatorio
+  const shuffledFlowers = [...AVAILABLE_FLOWERS].sort(() => Math.random() - 0.5);
 
-  selectedZones.forEach((zone, flowerIdx) => {
-    // Escoger flor al azar dentro de las 18 disponibles
-    const flower = AVAILABLE_FLOWERS[(cardIndex * 3 + flowerIdx + Math.floor(Math.random() * 5)) % AVAILABLE_FLOWERS.length];
+  perimeterZones.forEach((zone, idx) => {
+    // Tomar flor variada del mazo barajado
+    const flower = shuffledFlowers[idx % shuffledFlowers.length];
 
+    // Posición dispersa al azar dentro de su sector
     const top = zone.minTop + Math.random() * (zone.maxTop - zone.minTop);
     const left = zone.minLeft + Math.random() * (zone.maxLeft - zone.minLeft);
 
-    // Rotación orgánica entre -20deg y +20deg
-    const rot = -20 + Math.random() * 40;
-    // Escala natural entre 0.85 y 1.1
-    const scale = 0.85 + Math.random() * 0.25;
-    // Desfase de animación suave de viento
-    const swayX = -2 + Math.random() * 4;
+    // Rotación orgánica y variada (-30deg a +30deg)
+    const rot = -30 + Math.random() * 60;
+    // Escala variada para efecto natural
+    const scale = 0.82 + Math.random() * 0.35;
+    // Parámetros de balanceo y viento aleatorios
+    const swayX = -3 + Math.random() * 6;
     const swayY = -2 + Math.random() * 4;
-    const animDelay = Math.random() * 4.5;
-    const animDuration = 3.6 + Math.random() * 2;
+    const animDelay = Math.random() * 5;
+    const animDuration = 3.2 + Math.random() * 2.6;
 
     const img = document.createElement("img");
     img.className = "scattered-flower";
