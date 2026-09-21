@@ -8,27 +8,29 @@
 // LISTA DE COLORES VIVOS Y CLAROS (EL PRIMERO ROJO)
 // =============================================================================
 const COLORS = [
-  "#bb0000", // 01. Rojo vivo (Primera tarjeta)
-  "#FF6D00", // 02. Naranja eléctrico
-  "#FFAB00", // 03. Ámbar dorado luminoso
-  "#FFD600", // 04. Amarillo sol radiante
-  "#76FF03", // 05. Verde lima fluorescente
-  "#00E676", // 06. Verde esmeralda vivo
-  "#00E5FF", // 07. Turquesa eléctrico
-  "#00B0FF", // 08. Azul cielo brillante
-  "#2979FF", // 09. Azul cobalto vibrante
-  "#536DFE", // 10. Índigo eléctrico
-  "#651FFF", // 11. Púrpura ultravioleta
-  "#7C4DFF", // 12. Violeta luminoso
-  "#D500F9", // 13. Magenta / Fucsia neón
-  "#FF4081", // 14. Rosa chicle brillante
-  "#FF5252", // 15. Coral vivo intenso
-  "#FF9100", // 16. Mandarina brillante
-  "#AEEA00", // 17. Lima cítrico claro
-  "#1DE9B6", // 18. Aguamarina menta
-  "#0091EA", // 19. Azul cian vivo
-  "#FF1744", // 20. Rosa carmín brillante
-  "#AA00FF"  // 21. Orquídea púrpura viva
+  "#d32f2f", // 01. Rojo carmesí vivo (Primera tarjeta)
+  "#ff6f00", // 02. Naranja cálido radiante
+  "#ffa000", // 03. Ámbar vibrante
+  "#fbc02d", // 04. Amarillo sol dorado
+  "#689f38", // 05. Verde oliva fresco
+  "#388e3c", // 06. Verde esmeralda rico
+  "#00897b", // 07. Turquesa profundo
+  "#00acc1", // 08. Cian brillante
+  "#039be5", // 09. Azul vivo radiante
+  "#1976d2", // 10. Azul cobalto
+  "#3f51b5", // 11. Índigo eléctrico
+  "#5e35b1", // 12. Púrpura profundo
+  "#8e24aa", // 13. Violeta intenso
+  "#d81b60", // 14. Fucsia / Magenta
+  "#e91e63", // 15. Rosa intenso
+  "#f4511e", // 16. Coral bermellón
+  "#fb8c00", // 17. Naranja mandarina
+  "#7cb342", // 18. Verde manzana
+  "#00b0ff", // 19. Azul cielo brillante
+  "#d500f9", // 20. Magenta neón
+  "#aa00ff", // 21. Violeta neón
+  "#ff3d00", // 22. Rojo anaranjado neón
+  "#00e676"  // 23. Verde menta fluorescente
 ];
 
 // =============================================================================
@@ -36,8 +38,8 @@ const COLORS = [
 // =============================================================================
 const CARD_TEXTS = [
   "1r mes de novio",    // Tarjeta 1 (debajo del corazón)
-  "(texto para poner)", // Tarjeta 2
-  "(texto para poner)", // Tarjeta 3
+  "Amo ", // Tarjeta 2
+  "Amo", // Tarjeta 3
   "(texto para poner)", // Tarjeta 4
   "(texto para poner)", // Tarjeta 5
   "(texto para poner)", // Tarjeta 6
@@ -55,11 +57,13 @@ const CARD_TEXTS = [
   "(texto para poner)", // Tarjeta 18
   "(texto para poner)", // Tarjeta 19
   "(texto para poner)", // Tarjeta 20
-  "(texto para poner)"  // Tarjeta 21
+  "(texto para poner)", // Tarjeta 21
+  "(texto para poner)", // Tarjeta 22
+  "(texto para poner)"  // Tarjeta 23
 ];
 
 // =============================================================================
-// CATÁLOGO DE 21 FLORES DE MINECRAFT (DESCARGADAS EN LA CARPETA 'flores/')
+// CATÁLOGO DE FLORES DE MINECRAFT
 // =============================================================================
 const CARD_FLOWERS = [
   { name: "Amapola", file: "flores/01_amapola_poppy.png" },
@@ -82,13 +86,15 @@ const CARD_FLOWERS = [
   { name: "Flor de Antorcha", file: "flores/18_flor_de_antorcha_torchflower.png" },
   { name: "Planta Odre", file: "flores/19_planta_odre_pitcher_plant.png" },
   { name: "Flor de Esporas", file: "flores/20_flor_de_esporas_spore_blossom.png" },
-  { name: "Flor del Chorus", file: "flores/21_flor_del_chorus_chorus_flower.png" }
+  { name: "Flor del Chorus", file: "flores/21_flor_del_chorus_chorus_flower.png" },
+  { name: "Pétalos Rosa", file: "flores/21_petalos_rosa_pink_petals.png" },
+  { name: "Amapola Silvestre", file: "flores/01_amapola_poppy.png" }
 ];
 
 // =============================================================================
-// SELECCIÓN DE LAS PRIMERAS 18 FLORES PARA EL CONTORNO PERIMETRAL
+// SELECCIÓN DE FLORES PARA EL CONTORNO PERIMETRAL
 // =============================================================================
-const AVAILABLE_FLOWERS = CARD_FLOWERS.slice(0, 18);
+const AVAILABLE_FLOWERS = CARD_FLOWERS;
 
 // Genera una capa balanceada de flores alrededor de la tarjeta, manteniendo el centro limpio
 function createCardFlowersLayer(cardIndex) {
@@ -191,7 +197,7 @@ class FullscreenDeck {
       card.style.backgroundColor = hex;
 
       const cardText = CARD_TEXTS[index] || "(texto para poner)";
-      
+
       // 1. Capa de flores dispersas alrededor (primeras 18 flores, centro libre)
       const flowersLayer = createCardFlowersLayer(index);
       card.appendChild(flowersLayer);

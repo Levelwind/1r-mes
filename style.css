@@ -165,6 +165,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  margin-left: 10px;
   font-family: 'Minecraft', monospace, sans-serif;
   font-size: clamp(44px, 10vw, 76px);
   color: #000000;
@@ -219,7 +220,7 @@ body {
 
 .scattered-flower {
   position: absolute;
-  width: clamp(60px, 7vw, 90px);
+  width: clamp(70px, 8vw, 100px);
   height: auto;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
@@ -373,7 +374,7 @@ body {
   }
 
   .scattered-flower {
-    width: clamp(48px, 10vw, 66px);
+    width: clamp(65px, 13vw, 85px);
   }
 }
 
@@ -426,6 +427,6 @@ body {
   }
 
   .scattered-flower {
-    width: clamp(40px, 9vw, 56px);
+    width: clamp(56px, 12vw, 75px);
   }
 }
