@@ -92,9 +92,9 @@ const CARD_FLOWERS = [
 ];
 
 // =============================================================================
-// SELECCIÓN DE FLORES PARA EL CONTORNO PERIMETRAL
+// SELECCIÓN DE LAS PRIMERAS 18 FLORES PARA EL CONTORNO PERIMETRAL
 // =============================================================================
-const AVAILABLE_FLOWERS = CARD_FLOWERS;
+const AVAILABLE_FLOWERS = CARD_FLOWERS.slice(0, 18);
 
 // Genera una capa balanceada de flores alrededor de la tarjeta, manteniendo el centro limpio
 function createCardFlowersLayer(cardIndex) {
