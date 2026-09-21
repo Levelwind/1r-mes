@@ -1,0 +1,431 @@
+/* ==========================================================================
+   21 TARJETAS PANTALLA COMPLETA - ESTILO MINIMALISTA PURO
+   ========================================================================== */
+
+/* Fuente oficial estilo Minecraft */
+@font-face {
+  font-family: 'Minecraft';
+  src: url('fonts/Minecraft.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url('fonts/Minecraft-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: block;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+/* Escenario principal a pantalla completa */
+.viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Contenedor de las tarjetas */
+.deck {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Cada tarjeta cubre la pantalla completa */
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  will-change: transform, left, box-shadow;
+  transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.3, 1),
+    left 0.55s cubic-bezier(0.2, 0.9, 0.3, 1),
+    box-shadow 0.55s cubic-bezier(0.2, 0.9, 0.3, 1),
+    opacity 0.45s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Tarjeta activa: ocupa toda la pantalla */
+.card.is-active {
+  left: 0;
+  z-index: 10;
+  transform: translate3d(0, 0, 0);
+  box-shadow: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Tarjetas siguientes que se asoman en el lateral derecho */
+.card.is-next-1 {
+  left: calc(100vw - 60px);
+  z-index: 20;
+  transform: translate3d(0, 0, 0);
+  box-shadow: -15px 0 35px rgba(0, 0, 0, 0.5), -1px 0 0 rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.card.is-next-2 {
+  left: calc(100vw - 40px);
+  z-index: 21;
+  transform: translate3d(0, 0, 0);
+  box-shadow: -15px 0 35px rgba(0, 0, 0, 0.5), -1px 0 0 rgba(255, 255, 255, 0.15);
+  opacity: 1;
+  pointer-events: none;
+}
+
+.card.is-next-3 {
+  left: calc(100vw - 20px);
+  z-index: 22;
+  transform: translate3d(0, 0, 0);
+  box-shadow: -15px 0 35px rgba(0, 0, 0, 0.5), -1px 0 0 rgba(255, 255, 255, 0.1);
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Tarjetas anteriores que salieron por la izquierda */
+.card.is-prev {
+  left: 0;
+  z-index: 15;
+  transform: translate3d(-100vw, 0, 0);
+  opacity: 0;
+  box-shadow: 15px 0 35px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* Tarjetas en cola lejanas en la derecha */
+.card.is-far-next {
+  left: 100vw;
+  z-index: 19;
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   PRIMERA TARJETA (CORAZÓN Y TEXTO 8-BIT)
+   ========================================================================== */
+
+.first-card-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vh, 32px);
+  pointer-events: none;
+  padding: clamp(16px, 3vh, 32px) clamp(64px, 12vw, 130px);
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.heart-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-img {
+  width: min(340px, 75vw);
+  height: auto;
+  max-height: 44vh;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5))
+          drop-shadow(0 0 35px rgba(0, 0, 0, 0.35))
+          drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+}
+
+.heart-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Minecraft', monospace, sans-serif;
+  font-size: clamp(44px, 10vw, 76px);
+  color: #000000;
+  line-height: 1;
+  letter-spacing: 2px;
+  user-select: none;
+  z-index: 2;
+}
+
+.first-card-caption {
+  font-family: 'Minecraft', monospace, sans-serif;
+  font-size: clamp(22px, 4.5vw, 38px);
+  color: #000000;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 100%;
+  user-select: none;
+}
+
+/* ==========================================================================
+   TEXTO Y FUTUROS ELEMENTOS EN EL CENTRO DE LAS TARJETAS
+   ========================================================================== */
+
+.card-center-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 3vh, 28px);
+  padding: clamp(20px, 4vh, 40px) clamp(68px, 12vw, 140px);
+  pointer-events: none;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+/* ==========================================================================
+   FLORES DISPERSAS ALREDEDOR DE CADA TARJETA (EFECTO PERÍMETRO)
+   ========================================================================== */
+.card-flowers-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.scattered-flower {
+  position: absolute;
+  width: clamp(60px, 7vw, 90px);
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
+  will-change: transform;
+  animation: swayFlower 4.5s ease-in-out infinite alternate;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes swayFlower {
+  0% {
+    transform: translate(0, 0) rotate(var(--rot, 0deg)) scale(var(--scale, 1));
+  }
+  100% {
+    transform: translate(var(--sway-x, 2px), var(--sway-y, -3px)) rotate(calc(var(--rot, 0deg) + 3deg)) scale(calc(var(--scale, 1) * 1.02));
+  }
+}
+
+.card-center-text {
+  font-family: 'Minecraft', monospace, sans-serif;
+  font-size: clamp(22px, 4.5vw, 38px);
+  line-height: 1.5;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 3px 3px 0 #1b1b1b;
+  letter-spacing: 1px;
+  max-width: min(820px, 100%);
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   BOTONES LATERALES
+   ========================================================================== */
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1),
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.nav-btn svg {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s ease;
+}
+
+.nav-btn.prev {
+  left: 24px;
+}
+
+.nav-btn.next {
+  right: 76px;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-btn.prev:hover svg {
+  transform: translateX(-3px);
+}
+
+.nav-btn.next:hover svg {
+  transform: translateX(3px);
+}
+
+.nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Responsive para móviles y tablets */
+@media (max-width: 768px) {
+  .card.is-next-1 {
+    left: calc(100vw - 36px);
+  }
+
+  .card.is-next-2 {
+    left: calc(100vw - 24px);
+  }
+
+  .card.is-next-3 {
+    left: calc(100vw - 12px);
+  }
+
+  .nav-btn {
+    width: 46px;
+    height: 46px;
+  }
+
+  .nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-btn.prev {
+    left: 10px;
+  }
+
+  .nav-btn.next {
+    right: 44px;
+  }
+
+  .first-card-content {
+    padding: 20px 58px;
+    gap: 16px;
+  }
+
+  .heart-img {
+    width: min(250px, 68vw);
+    max-height: 40vh;
+  }
+
+  .heart-number {
+    font-size: 36px;
+  }
+
+  .first-card-caption {
+    font-size: 19px;
+  }
+
+  .card-center-content {
+    padding: 20px 58px;
+    gap: 16px;
+  }
+
+  .card-center-text {
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  .scattered-flower {
+    width: clamp(48px, 10vw, 66px);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nav-btn.prev {
+    left: 8px;
+  }
+
+  .nav-btn.next {
+    right: 40px;
+  }
+
+  .first-card-content {
+    padding: 16px 50px;
+    gap: 14px;
+  }
+
+  .heart-img {
+    width: min(220px, 65vw);
+    max-height: 36vh;
+  }
+
+  .heart-number {
+    font-size: 32px;
+  }
+
+  .first-card-caption {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .card-center-content {
+    padding: 16px 50px;
+    gap: 14px;
+  }
+
+  .card-center-text {
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .scattered-flower {
+    width: clamp(40px, 9vw, 56px);
+  }
+}
