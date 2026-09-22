@@ -101,33 +101,38 @@ function createCardFlowersLayer(cardIndex) {
   const layer = document.createElement("div");
   layer.className = "card-flowers-layer";
 
-  // 18 sectores perimetrales para cubrir todos los bordes uniformemente sin dejar huecos
+  // 18 sectores perimetrales distribuidos en bordes superior, inferior y esquinas altas/bajas
+  // manteniendo la franja media (top 24% a 67%) totalmente libre para que las flores no toquen el texto
   const perimeterZones = [
-    // Borde Superior (5 sectores continuos)
-    { minTop: 2, maxTop: 9, minLeft: 12, maxLeft: 22 },
-    { minTop: 2, maxTop: 9, minLeft: 24, maxLeft: 36 },
-    { minTop: 2, maxTop: 9, minLeft: 38, maxLeft: 50 },
-    { minTop: 2, maxTop: 9, minLeft: 52, maxLeft: 66 },
-    { minTop: 2, maxTop: 9, minLeft: 68, maxLeft: 81 },
+    // Borde Superior (6 sectores)
+    { minTop: 2, maxTop: 8, minLeft: 12, maxLeft: 22 },
+    { minTop: 2, maxTop: 8, minLeft: 24, maxLeft: 34 },
+    { minTop: 2, maxTop: 8, minLeft: 36, maxLeft: 46 },
+    { minTop: 2, maxTop: 8, minLeft: 48, maxLeft: 58 },
+    { minTop: 2, maxTop: 8, minLeft: 60, maxLeft: 70 },
+    { minTop: 2, maxTop: 8, minLeft: 72, maxLeft: 81 },
 
-    // Borde Izquierdo (4 sectores continuos)
-    { minTop: 18, maxTop: 29, minLeft: 3, maxLeft: 9 },
-    { minTop: 32, maxTop: 43, minLeft: 3, maxLeft: 9 },
-    { minTop: 46, maxTop: 59, minLeft: 3, maxLeft: 9 },
-    { minTop: 62, maxTop: 73, minLeft: 3, maxLeft: 9 },
+    // Borde Izquierdo - Zona Alta (hombro superior)
+    { minTop: 11, maxTop: 16, minLeft: 2, maxLeft: 6 },
+    { minTop: 17, maxTop: 23, minLeft: 2, maxLeft: 6 },
 
-    // Borde Derecho (4 sectores continuos)
-    { minTop: 14, maxTop: 27, minLeft: 73, maxLeft: 80 },
-    { minTop: 30, maxTop: 43, minLeft: 73, maxLeft: 80 },
-    { minTop: 46, maxTop: 59, minLeft: 73, maxLeft: 80 },
-    { minTop: 62, maxTop: 73, minLeft: 73, maxLeft: 80 },
+    // Borde Izquierdo - Zona Baja (cadera inferior)
+    { minTop: 67, maxTop: 75, minLeft: 2, maxLeft: 6 },
 
-    // Borde Inferior (5 sectores continuos)
-    { minTop: 77, maxTop: 83, minLeft: 4, maxLeft: 18 },
-    { minTop: 77, maxTop: 83, minLeft: 20, maxLeft: 34 },
-    { minTop: 77, maxTop: 83, minLeft: 36, maxLeft: 50 },
-    { minTop: 77, maxTop: 83, minLeft: 52, maxLeft: 66 },
-    { minTop: 77, maxTop: 83, minLeft: 68, maxLeft: 81 }
+    // Borde Derecho - Zona Alta (hombro superior)
+    { minTop: 11, maxTop: 16, minLeft: 76, maxLeft: 81 },
+    { minTop: 17, maxTop: 23, minLeft: 76, maxLeft: 81 },
+
+    // Borde Derecho - Zona Baja (cadera inferior)
+    { minTop: 67, maxTop: 75, minLeft: 76, maxLeft: 81 },
+
+    // Borde Inferior (6 sectores)
+    { minTop: 78, maxTop: 84, minLeft: 4, maxLeft: 16 },
+    { minTop: 78, maxTop: 84, minLeft: 18, maxLeft: 29 },
+    { minTop: 78, maxTop: 84, minLeft: 31, maxLeft: 42 },
+    { minTop: 78, maxTop: 84, minLeft: 44, maxLeft: 55 },
+    { minTop: 78, maxTop: 84, minLeft: 57, maxLeft: 68 },
+    { minTop: 78, maxTop: 84, minLeft: 70, maxLeft: 81 }
   ];
 
   // Barajar las 18 flores para que cada tarjeta tenga un orden completamente variado y aleatorio
@@ -145,9 +150,9 @@ function createCardFlowersLayer(cardIndex) {
     const rot = -30 + Math.random() * 60;
     // Escala variada para efecto natural
     const scale = 0.82 + Math.random() * 0.35;
-    // Parámetros de balanceo y viento aleatorios
-    const swayX = -3 + Math.random() * 6;
-    const swayY = -2 + Math.random() * 4;
+    // Parámetros de balanceo y viento aleatorios y sutiles
+    const swayX = -2 + Math.random() * 4;
+    const swayY = -1.5 + Math.random() * 3;
     const animDelay = Math.random() * 5;
     const animDuration = 3.2 + Math.random() * 2.6;
 
