@@ -140,6 +140,7 @@ body {
   padding: clamp(16px, 3vh, 32px) clamp(32px, 8vw, 130px);
   max-width: 100vw;
   max-height: 100dvh;
+  z-index: 8;
 }
 
 .heart-container {
@@ -203,6 +204,7 @@ body {
   pointer-events: none;
   max-width: 100vw;
   max-height: 100dvh;
+  z-index: 8;
 }
 
 /* ==========================================================================
@@ -243,14 +245,15 @@ body {
 
 .card-center-text {
   font-family: 'Minecraft', monospace, sans-serif;
-  font-size: clamp(22px, 4.5vw, 38px);
+  font-size: clamp(20px, 4.2vw, 36px);
   line-height: 1.5;
   text-align: center;
-  color: #ffffff;
-  text-shadow: 3px 3px 0 #1b1b1b;
-  letter-spacing: 1px;
+  color: #000000;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
   max-width: min(820px, 100%);
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 /* Número de índice en la esquina superior izquierda (Tarjetas 2 a 22) */
@@ -378,7 +381,7 @@ body {
   }
 
   .first-card-content {
-    padding: 20px 24px 72px;
+    padding: 20px 48px 76px 36px;
     gap: 16px;
   }
 
@@ -396,17 +399,18 @@ body {
   }
 
   .card-center-content {
-    padding: 20px 24px 72px;
+    padding: 20px 48px 76px 36px;
     gap: 16px;
   }
 
   .card-center-text {
-    font-size: 19px;
-    line-height: 1.55;
+    font-size: clamp(16px, 3.8vw, 19px);
+    line-height: 1.48;
+    max-width: 100%;
   }
 
   .scattered-flower {
-    width: clamp(65px, 13vw, 85px);
+    width: clamp(48px, 9vw, 62px);
   }
 
   .card-corner-number {
@@ -439,7 +443,7 @@ body {
   }
 
   .first-card-content {
-    padding: 16px 20px 64px;
+    padding: 16px 44px 72px 28px;
     gap: 14px;
   }
 
@@ -453,22 +457,23 @@ body {
   }
 
   .first-card-caption {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.4;
   }
 
   .card-center-content {
-    padding: 16px 20px 64px;
+    padding: 16px 44px 72px 28px;
     gap: 14px;
   }
 
   .card-center-text {
-    font-size: 17px;
-    line-height: 1.5;
+    font-size: clamp(14px, 3.8vw, 17px);
+    line-height: 1.45;
+    max-width: 100%;
   }
 
   .scattered-flower {
-    width: clamp(56px, 12vw, 75px);
+    width: clamp(40px, 8.5vw, 50px);
   }
 
   .card-corner-number {

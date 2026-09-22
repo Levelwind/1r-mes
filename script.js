@@ -50,16 +50,16 @@ const CARD_TEXTS = [
   "Amo su nariz", // Tarjeta 11
   "Amo su cachetes", // Tarjeta 12 
   "Amo cuando se preocupa por mi", // Tarjeta 13
-  "Amo como compartismo media neurona", // Tarjeta 14
+  "Amo como compartimos media neurona", // Tarjeta 14
   "Amo como me haces sentir", // Tarjeta 15
   "Amo como se rie de mis chiste rancios", // Tarjeta 16
-  "Amo cuando me dice te quiero", // Tarjeta 17
+  "Amo cuando me dice te quiero me encanta", // Tarjeta 17
   "Amo cuando me dice te amo", // Tarjeta 18
   "Amo todo de usted", // Tarjeta 19
   "Amo lo inteligente que es", // Tarjeta 20
   "Amo lo bien que baila JAJJAJAJAJ", // Tarjeta 21
   "Amo sus pies ", // Tarjeta 22
-  "te amare para siempre y si no es para siempre quemo el mundo"  // Tarjeta 23
+  "te amare para siempre y si no es para siempre quemo el mundo te amo mucho jeca"  // Tarjeta 23
 ];
 
 // =============================================================================
