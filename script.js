@@ -37,29 +37,29 @@ const COLORS = [
 // TEXTOS DE CADA CARTA (MODIFICA AQUÍ TUS MENSAJES PERSONALMENTE):
 // =============================================================================
 const CARD_TEXTS = [
-  "1r mes de novio",    // Tarjeta 1 (debajo del corazón)
-  "Amo ", // Tarjeta 2
-  "Amo", // Tarjeta 3
-  "(texto para poner)", // Tarjeta 4
-  "(texto para poner)", // Tarjeta 5
-  "(texto para poner)", // Tarjeta 6
-  "(texto para poner)", // Tarjeta 7
-  "(texto para poner)", // Tarjeta 8
-  "(texto para poner)", // Tarjeta 9
-  "(texto para poner)", // Tarjeta 10
-  "(texto para poner)", // Tarjeta 11
-  "(texto para poner)", // Tarjeta 12
-  "(texto para poner)", // Tarjeta 13
-  "(texto para poner)", // Tarjeta 14
-  "(texto para poner)", // Tarjeta 15
-  "(texto para poner)", // Tarjeta 16
-  "(texto para poner)", // Tarjeta 17
-  "(texto para poner)", // Tarjeta 18
-  "(texto para poner)", // Tarjeta 19
-  "(texto para poner)", // Tarjeta 20
-  "(texto para poner)", // Tarjeta 21
-  "(texto para poner)", // Tarjeta 22
-  "(texto para poner)"  // Tarjeta 23
+  "1r mes de novios",    // Tarjeta 1 (debajo del corazón)
+  "Amo sus labios ", // Tarjeta 2
+  "Amo su pelo ", // Tarjeta 3
+  "Amo su voz", // Tarjeta 4
+  "Amo su forma de hablar", // Tarjeta 5
+  "Amo su forma de insultar", // Tarjeta 6
+  "Amo su risa de pavo", // Tarjeta 7
+  "Amo sus chistes rancios", // Tarjeta 8
+  "Amo su forma de pensar", // Tarjeta 9
+  "Amo su forma de debatir", // Tarjeta 10
+  "Amo su nariz", // Tarjeta 11
+  "Amo su cachetes", // Tarjeta 12 
+  "Amo cuando se preocupa por mi", // Tarjeta 13
+  "Amo como compartismo media neurona", // Tarjeta 14
+  "Amo como me haces sentir", // Tarjeta 15
+  "Amo como se rie de mis chiste rancios", // Tarjeta 16
+  "Amo cuando me dice te quiero", // Tarjeta 17
+  "Amo cuando me dice te amo", // Tarjeta 18
+  "Amo todo de usted", // Tarjeta 19
+  "Amo lo inteligente que es", // Tarjeta 20
+  "Amo lo bien que baila JAJJAJAJAJ", // Tarjeta 21
+  "Amo sus pies ", // Tarjeta 22
+  "te amare para siempre y si no es para siempre quemo el mundo"  // Tarjeta 23
 ];
 
 // =============================================================================
@@ -104,15 +104,15 @@ function createCardFlowersLayer(cardIndex) {
   // 18 sectores perimetrales para cubrir todos los bordes uniformemente sin dejar huecos
   const perimeterZones = [
     // Borde Superior (5 sectores continuos)
-    { minTop: 2, maxTop: 9, minLeft: 4, maxLeft: 18 },
-    { minTop: 2, maxTop: 9, minLeft: 20, maxLeft: 34 },
-    { minTop: 2, maxTop: 9, minLeft: 36, maxLeft: 50 },
+    { minTop: 2, maxTop: 9, minLeft: 12, maxLeft: 22 },
+    { minTop: 2, maxTop: 9, minLeft: 24, maxLeft: 36 },
+    { minTop: 2, maxTop: 9, minLeft: 38, maxLeft: 50 },
     { minTop: 2, maxTop: 9, minLeft: 52, maxLeft: 66 },
     { minTop: 2, maxTop: 9, minLeft: 68, maxLeft: 81 },
 
     // Borde Izquierdo (4 sectores continuos)
-    { minTop: 14, maxTop: 27, minLeft: 3, maxLeft: 9 },
-    { minTop: 30, maxTop: 43, minLeft: 3, maxLeft: 9 },
+    { minTop: 18, maxTop: 29, minLeft: 3, maxLeft: 9 },
+    { minTop: 32, maxTop: 43, minLeft: 3, maxLeft: 9 },
     { minTop: 46, maxTop: 59, minLeft: 3, maxLeft: 9 },
     { minTop: 62, maxTop: 73, minLeft: 3, maxLeft: 9 },
 
@@ -207,7 +207,15 @@ class FullscreenDeck {
       const flowersLayer = createCardFlowersLayer(index);
       card.appendChild(flowersLayer);
 
-      // 2. Contenido central según corresponda
+      // 2. Número en la esquina superior izquierda (del 1 al 21, a partir de la 2da tarjeta)
+      if (index >= 1 && index <= 21) {
+        const cornerNum = document.createElement("span");
+        cornerNum.className = "card-corner-number";
+        cornerNum.textContent = index;
+        card.appendChild(cornerNum);
+      }
+
+      // 3. Contenido central según corresponda
       if (index === 0) {
         // Primera tarjeta: corazón con el 21 en 8-bit negro y texto debajo
         const firstContent = document.createElement("div");

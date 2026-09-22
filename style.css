@@ -253,6 +253,23 @@ body {
   word-break: break-word;
 }
 
+/* Número de índice en la esquina superior izquierda (Tarjetas 2 a 22) */
+.card-corner-number {
+  position: absolute;
+  top: clamp(14px, 3vh, 26px);
+  left: clamp(16px, 4vw, 32px);
+  font-family: 'Minecraft', monospace, sans-serif;
+  font-size: clamp(24px, 5vw, 38px);
+  font-weight: bold;
+  color: #1a1a1a; /* Negro / gris oscuro */
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.35);
+  line-height: 1;
+  letter-spacing: 1px;
+  z-index: 15;
+  pointer-events: none;
+  user-select: none;
+}
+
 /* ==========================================================================
    BOTONES LATERALES
    ========================================================================== */
@@ -391,6 +408,12 @@ body {
   .scattered-flower {
     width: clamp(65px, 13vw, 85px);
   }
+
+  .card-corner-number {
+    top: 14px;
+    left: 16px;
+    font-size: 26px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -446,5 +469,11 @@ body {
 
   .scattered-flower {
     width: clamp(56px, 12vw, 75px);
+  }
+
+  .card-corner-number {
+    top: 12px;
+    left: 14px;
+    font-size: 22px;
   }
 }
