@@ -36,6 +36,8 @@ const COLORS = [
 // =============================================================================
 // TEXTOS DE CADA CARTA (MODIFICA AQUÍ TUS MENSAJES PERSONALMENTE):
 // =============================================================================
+const FIRST_CARD_SUBCAPTION = "(malparida te odio, mentiras te amo)";
+
 const CARD_TEXTS = [
   "1r mes de novios",    // Tarjeta 1 (debajo del corazón)
   "Amo sus labios ", // Tarjeta 2
@@ -226,6 +228,7 @@ class FullscreenDeck {
             <span class="heart-number">21</span>
           </div>
           <p class="first-card-caption">${cardText}</p>
+          <p class="first-card-subcaption">${FIRST_CARD_SUBCAPTION}</p>
         `;
         card.appendChild(firstContent);
       } else {
